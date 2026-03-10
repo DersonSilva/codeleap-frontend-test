@@ -3,7 +3,11 @@ import { Input } from "../ui/Input/Input";
 import { Textarea } from "../ui/Textarea/Textarea";
 import { Button } from "../ui/Button/Button";
 
-export function CreatePost() {
+type Props = {
+  onCreate: (title: string, content: string) => void;
+};
+
+export function CreatePost({ onCreate }: Props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -11,12 +15,7 @@ export function CreatePost() {
 
   function handleCreate() {
     if (disabled) return;
-
-    console.log({
-      title,
-      content,
-    });
-
+    onCreate(title, content);
     setTitle("");
     setContent("");
   }
@@ -28,7 +27,6 @@ export function CreatePost() {
       <div className="flex flex-col gap-4">
         <div>
           <label className="text-sm block mb-1">Title</label>
-
           <Input
             placeholder="Hello world"
             value={title}
@@ -38,7 +36,6 @@ export function CreatePost() {
 
         <div>
           <label className="text-sm block mb-1">Content</label>
-
           <Textarea
             placeholder="Content here"
             value={content}

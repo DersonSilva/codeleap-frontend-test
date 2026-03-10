@@ -1,4 +1,3 @@
-// src/components/ui/Toast/Toast.tsx
 import type { Toast as ToastType } from "./toastTypes";
 
 type Props = {

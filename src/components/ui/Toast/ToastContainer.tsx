@@ -1,4 +1,3 @@
-// src/components/ui/Toast/ToastContainer.tsx
 import { Toast } from "./Toast";
 import type { Toast as ToastType } from "./toastTypes";
 

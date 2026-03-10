@@ -1,5 +1,6 @@
 // src/App.tsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Login from "./pages/login/Login";
 import Feed from "./pages/feed/Feed";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
@@ -7,8 +8,10 @@ import { ToastProvider } from "./context/ToastProvider";
 import { useToast } from "./hooks/UseToast";
 import { ToastContainer } from "./components/ui/Toast/ToastContainer";
 
+const queryClient = new QueryClient();
+
 function AppContent() {
-  const { toasts } = useToast(); // ✅ pega os toasts do contexto
+  const { toasts } = useToast();
 
   return (
     <>
@@ -25,17 +28,18 @@ function AppContent() {
           />
         </Routes>
       </BrowserRouter>
-      <ToastContainer toasts={toasts} /> {/* ✅ renderiza os toasts */}
+
+      <ToastContainer toasts={toasts} />
     </>
   );
 }
 
-function App() {
+export default function App() {
   return (
-    <ToastProvider>
-      <AppContent />
-    </ToastProvider>
+    <QueryClientProvider client={queryClient}>
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
+    </QueryClientProvider>
   );
 }
-
-export default App;

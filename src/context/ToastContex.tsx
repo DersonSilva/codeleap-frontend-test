@@ -1,4 +1,3 @@
-// src/context/ToastContext.ts
 import { createContext } from "react";
 import type { Toast } from "../components/ui/Toast/toastTypes";
 

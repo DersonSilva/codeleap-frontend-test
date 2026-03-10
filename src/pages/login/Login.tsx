@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Input } from "../../components/ui/Input/Input";
 import { Button } from "../../components/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "../../hooks/UseToast"; // ✅ import do hook
+import { useToast } from "../../hooks/UseToast";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
-  const { showToast } = useToast(); // ✅ pega o showToast do hook
+  const { showToast } = useToast();
 
   const isDisabled = !username.trim();
 
@@ -17,7 +17,7 @@ export default function Login() {
     const name = username.trim();
     localStorage.setItem("username", name);
 
-    showToast("Login successful!", "success"); // ✅ toast aqui
+    showToast("Login successful!", "success");
 
     navigate("/feed");
   }
