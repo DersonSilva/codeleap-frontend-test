@@ -12,18 +12,20 @@ export type Post = {
 export function usePosts() {
   const queryClient = useQueryClient();
 
+  // GET posts do backend
   const query = useQuery<Post[]>({
     queryKey: ["posts"],
     queryFn: async () => {
       const res = await API.get("");
-
+      // garante que os mais recentes fiquem no topo
       return res.data.results.sort(
         (a: Post, b: Post) =>
           new Date(b.created_datetime).getTime() -
           new Date(a.created_datetime).getTime(),
       );
     },
-    staleTime: 0,
+    staleTime: 1000 * 60 * 5, // 5 minutos antes de considerar obsoleto
+    refetchOnWindowFocus: true, // sempre atualiza ao voltar para a aba
   });
 
   // CREATE post

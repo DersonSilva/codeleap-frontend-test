@@ -5,27 +5,22 @@ import { Modal } from "../../components/ui/Modal/Modal";
 import { Input } from "../../components/ui/Input/Input";
 import { Textarea } from "../../components/ui/Textarea/Textarea";
 import { Button } from "../../components/ui/Button/Button";
-
 import type { Post } from "../../hooks/useposts";
 import { useToast } from "../../hooks/useToast";
 import { usePosts } from "../../hooks/useposts";
-
 import { useState } from "react";
 import { formatDistanceToNow, parseISO } from "date-fns";
+import { Skeleton } from "../../components/ui/Skeleton/Skeleton";
 
 export default function Feed() {
   const { posts, isLoading, createPost, updatePost, deletePost } = usePosts();
   const { showToast } = useToast();
-
   const [username] = useState(localStorage.getItem("username") || "");
-
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [deletingPost, setDeletingPost] = useState<Post | null>(null);
-
   const [editTitle, setEditTitle] = useState("");
   const [editContent, setEditContent] = useState("");
 
-  // OPEN EDIT MODAL
   function openEditModal(post: Post) {
     setEditingPost(post);
     setEditTitle(post.title);
@@ -36,7 +31,6 @@ export default function Feed() {
     setEditingPost(null);
   }
 
-  // SAVE EDIT
   async function handleSaveEdit() {
     if (!editingPost) return;
 
@@ -54,7 +48,6 @@ export default function Feed() {
     }
   }
 
-  // OPEN DELETE MODAL
   function openDeleteModal(post: Post) {
     setDeletingPost(post);
   }
@@ -63,7 +56,6 @@ export default function Feed() {
     setDeletingPost(null);
   }
 
-  // CONFIRM DELETE
   async function handleConfirmDelete() {
     if (!deletingPost) return;
 
@@ -76,7 +68,16 @@ export default function Feed() {
     }
   }
 
-  if (isLoading) return <div className="p-6">Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="p-6 flex flex-col gap-4 max-w-2xl mx-auto">
+        <Skeleton width="30%" height="1.5rem" /> {/* título */}
+        <Skeleton width="50%" height="1.2rem" /> {/* subtítulo/label */}
+        <Skeleton width="100%" height="6rem" rounded /> {/* card */}
+        <Skeleton width="100%" height="6rem" rounded />
+        <Skeleton width="100%" height="6rem" rounded />
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -110,7 +111,6 @@ export default function Feed() {
         ))}
       </main>
 
-      {/* EDIT MODAL */}
       {editingPost && (
         <Modal onClose={closeEditModal}>
           <div className="flex flex-col gap-4">
@@ -147,7 +147,6 @@ export default function Feed() {
         </Modal>
       )}
 
-      {/* DELETE MODAL */}
       {deletingPost && (
         <Modal onClose={closeDeleteModal}>
           <div className="flex flex-col gap-6">
