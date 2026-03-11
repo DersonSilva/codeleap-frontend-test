@@ -44,7 +44,12 @@ export function CreatePost({ onCreate }: Props) {
         </div>
 
         <div className="flex justify-end">
-          <Button disabled={disabled} onClick={handleCreate}>
+          <Button
+            variant="brand"
+            size="sm"
+            disabled={disabled}
+            onClick={handleCreate}
+          >
             Create
           </Button>
         </div>

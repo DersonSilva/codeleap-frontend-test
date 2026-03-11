@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { EditSquare, DeleteForever } from "@mui/icons-material";
 
 type PostCardProps = {
@@ -7,7 +6,7 @@ type PostCardProps = {
   content: string;
   time: string;
   canEdit?: boolean;
-  onEdit?: (title: string, content: string) => void;
+  onEdit?: () => void;
   onDelete?: () => void;
 };
 
@@ -20,28 +19,17 @@ export function PostCard({
   onEdit,
   onDelete,
 }: PostCardProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editTitle, setEditTitle] = useState(title);
-  const [editContent, setEditContent] = useState(content);
-
   return (
     <div className="border rounded-lg overflow-hidden bg-white">
-      <div className="bg-blue-500 text-white px-4 py-3 flex justify-between items-center">
-        {isEditing ? (
-          <input
-            className="rounded p-1 text-black"
-            value={editTitle}
-            onChange={(e) => setEditTitle(e.target.value)}
-          />
-        ) : (
-          <h3 className="font-bold">{title}</h3>
-        )}
+      <div className="bg-brand text-white px-4 py-3 flex justify-between items-center">
+        <h3 className="font-bold">{title}</h3>
 
-        {canEdit && !isEditing && (
+        {canEdit && (
           <div className="flex gap-2">
-            <button onClick={() => setIsEditing(true)}>
+            <button onClick={onEdit}>
               <EditSquare />
             </button>
+
             <button onClick={onDelete}>
               <DeleteForever />
             </button>
@@ -55,34 +43,7 @@ export function PostCard({
           <span>{time}</span>
         </div>
 
-        {isEditing ? (
-          <>
-            <textarea
-              className="border p-1 rounded w-full"
-              value={editContent}
-              onChange={(e) => setEditContent(e.target.value)}
-            />
-            <div className="flex gap-2 mt-2">
-              <button
-                className="bg-green-500 text-white px-2 rounded"
-                onClick={() => {
-                  onEdit?.(editTitle, editContent);
-                  setIsEditing(false);
-                }}
-              >
-                Save
-              </button>
-              <button
-                className="bg-gray-300 px-2 rounded"
-                onClick={() => setIsEditing(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          </>
-        ) : (
-          <p>{content}</p>
-        )}
+        <p>{content}</p>
       </div>
     </div>
   );
