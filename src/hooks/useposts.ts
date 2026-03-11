@@ -15,16 +15,15 @@ export function usePosts() {
   const query = useQuery<Post[]>({
     queryKey: ["posts"],
     queryFn: async () => {
-      const res = await API.get("/");
-      const posts: Post[] = res.data.results; // pegar os resultados
-      return posts.sort(
-        (a, b) =>
+      const res = await API.get("");
+
+      return res.data.results.sort(
+        (a: Post, b: Post) =>
           new Date(b.created_datetime).getTime() -
           new Date(a.created_datetime).getTime(),
       );
     },
-    staleTime: 1000 * 60, // 1 minuto
-    refetchOnWindowFocus: false,
+    staleTime: 0,
   });
 
   // CREATE post

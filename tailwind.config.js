@@ -6,6 +6,14 @@ export default {
       colors: {
         background: "#DDDDDD",
         brand: "#7695EC",
+        border: "#777777",
+        delete: "#FF5151",
+        "delete-dark": "#e04848",
+        save: "#47B960",
+        "save-dark": "#3fa250",
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
       },
     },
   },

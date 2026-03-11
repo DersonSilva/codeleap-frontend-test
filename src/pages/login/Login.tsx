@@ -25,13 +25,13 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="bg-white w-full max-w-md sm:max-w-lg p-6 sm:p-8 rounded-lg shadow">
-        <h1 className="text-lg sm:text-xl font-bold mb-6">
+        <h1 className="w-[313px] h-[26px] font-bold text-[22px] leading-[26px] tracking-[0%] mb-4">
           Welcome to CodeLeap network!
         </h1>
 
         <div className="flex flex-col gap-4">
           <div>
-            <label className="text-sm font-medium block mb-1">
+            <label className="w-[199px] h-[19px] font-normal text-[16px] leading-[19px] tracking-[0%] block mb-1">
               Please enter your username
             </label>
 
@@ -39,11 +39,17 @@ export default function Login() {
               placeholder="John Doe"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              className="w-[452px] h-8 rounded-lg border border-border px-3"
             />
           </div>
 
           <div className="flex justify-end">
-            <Button onClick={handleEnter} disabled={isDisabled}>
+            <Button
+              className="bg-brand"
+              onClick={handleEnter}
+              disabled={isDisabled}
+              size="sm"
+            >
               ENTER
             </Button>
           </div>

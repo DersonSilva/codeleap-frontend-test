@@ -12,12 +12,12 @@ export function Button({
   ...props
 }: ButtonProps) {
   const variants = {
-    primary: "bg-blue-500 text-white hover:bg-blue-600",
+    primary: "bg-brand text-white hover:bg-brand/90",
     secondary:
       "border border-black text-black bg-transparent hover:bg-gray-100",
-    success: "bg-[#47B960] text-white hover:opacity-90",
-    danger: "bg-red-500 text-white hover:bg-red-600",
-    brand: "bg-[#7695EC] text-white hover:bg-[#5f7ee6]",
+    success: "bg-save text-white hover:bg-save-dark",
+    danger: "bg-delete text-white hover:bg-delete-dark",
+    brand: "bg-brand text-white hover:bg-brand/90",
   };
 
   const sizes = {

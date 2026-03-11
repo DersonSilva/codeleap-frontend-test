@@ -119,7 +119,7 @@ export default function Feed() {
             <div>
               <label className="text-sm">Title</label>
               <Input
-                className="w-[612px] h-[32px] rounded-[8px] border px-3"
+                className="w-[612px] h-[32px] rounded-[8px] border border-border px-3"
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
               />
@@ -128,7 +128,7 @@ export default function Feed() {
             <div>
               <label className="text-sm">Content</label>
               <Textarea
-                className="w-[612px] h-[74px] rounded-[8px] border px-3"
+                className="w-[612px] h-[74px] rounded-[8px] border border-border px-3"
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
               />
