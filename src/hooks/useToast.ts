@@ -1,4 +1,3 @@
-// src/hooks/useToast.ts
 import { useContext } from "react";
 import { ToastContext } from "../context/ToastContex";
 import type { ToastContextType } from "../context/ToastContex";

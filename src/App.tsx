@@ -1,11 +1,10 @@
-// src/App.tsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Login from "./pages/login/Login";
 import Feed from "./pages/feed/Feed";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { ToastProvider } from "./context/ToastProvider";
-import { useToast } from "./hooks/UseToast";
+import { useToast } from "./hooks/useToast";
 import { ToastContainer } from "./components/ui/Toast/ToastContainer";
 
 const queryClient = new QueryClient();

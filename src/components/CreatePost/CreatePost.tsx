@@ -21,8 +21,13 @@ export function CreatePost({ onCreate }: Props) {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg border">
-      <h2 className="text-lg font-bold mb-4">What's on your mind?</h2>
+    <div
+      className="bg-white p-6 rounded-lg border border-border mx-auto
+                 w-full max-w-[752px] h-[334px] flex flex-col justify-between"
+    >
+      <h2 className="text-lg font-bold mb-4 text-center sm:text-left">
+        What's on your mind?
+      </h2>
 
       <div className="flex flex-col gap-4">
         <div>
@@ -31,6 +36,7 @@ export function CreatePost({ onCreate }: Props) {
             placeholder="Hello world"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="w-full h-[32px] rounded-[8px] border border-border px-3"
           />
         </div>
 
@@ -40,19 +46,20 @@ export function CreatePost({ onCreate }: Props) {
             placeholder="Content here"
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            className="w-full h-[74px] rounded-[8px] border border-border px-3 py-2"
           />
         </div>
+      </div>
 
-        <div className="flex justify-end">
-          <Button
-            variant="brand"
-            size="sm"
-            disabled={disabled}
-            onClick={handleCreate}
-          >
-            Create
-          </Button>
-        </div>
+      <div className="flex justify-end">
+        <Button
+          variant="brand"
+          size="sm"
+          disabled={disabled}
+          onClick={handleCreate}
+        >
+          Create
+        </Button>
       </div>
     </div>
   );

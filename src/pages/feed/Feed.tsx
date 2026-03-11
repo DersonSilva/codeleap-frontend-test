@@ -15,9 +15,12 @@ import { Skeleton } from "../../components/ui/Skeleton/Skeleton";
 export default function Feed() {
   const { posts, isLoading, createPost, updatePost, deletePost } = usePosts();
   const { showToast } = useToast();
+
   const [username] = useState(localStorage.getItem("username") || "");
+
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [deletingPost, setDeletingPost] = useState<Post | null>(null);
+
   const [editTitle, setEditTitle] = useState("");
   const [editContent, setEditContent] = useState("");
 
@@ -70,46 +73,49 @@ export default function Feed() {
 
   if (isLoading)
     return (
-      <div className="p-6 flex flex-col gap-4 max-w-2xl mx-auto">
-        <Skeleton width="30%" height="1.5rem" /> {/* título */}
-        <Skeleton width="50%" height="1.2rem" /> {/* subtítulo/label */}
-        <Skeleton width="100%" height="6rem" rounded /> {/* card */}
-        <Skeleton width="100%" height="6rem" rounded />
-        <Skeleton width="100%" height="6rem" rounded />
+      <div className="min-h-screen bg-gray-100 flex justify-center py-10">
+        <div className="w-[800px] bg-white rounded-lg p-6 flex flex-col gap-4">
+          <Skeleton width="30%" height="1.5rem" />
+          <Skeleton width="50%" height="1.2rem" />
+          <Skeleton width="100%" height="6rem" rounded />
+          <Skeleton width="100%" height="6rem" rounded />
+          <Skeleton width="100%" height="6rem" rounded />
+        </div>
       </div>
     );
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Header />
-
-      <main className="max-w-2xl mx-auto p-6 flex flex-col gap-6">
-        <CreatePost
-          onCreate={async (title, content) => {
-            try {
-              await createPost.mutateAsync({ username, title, content });
-              showToast("Post created!", "success");
-            } catch {
-              showToast("Error creating post", "error");
-            }
-          }}
-        />
-
-        {posts.map((post) => (
-          <PostCard
-            key={post.id}
-            title={post.title}
-            username={post.username}
-            content={post.content}
-            time={formatDistanceToNow(parseISO(post.created_datetime), {
-              addSuffix: true,
-            })}
-            canEdit={post.username === username}
-            onEdit={() => openEditModal(post)}
-            onDelete={() => openDeleteModal(post)}
+    <div className="min-h-screen bg-gray-100 flex justify-center">
+      <div className="w-[800px] bg-white  shadow-sm overflow-hidden">
+        <Header />
+        <main className="p-6 flex flex-col gap-6">
+          <CreatePost
+            onCreate={async (title, content) => {
+              try {
+                await createPost.mutateAsync({ username, title, content });
+                showToast("Post created!", "success");
+              } catch {
+                showToast("Error creating post", "error");
+              }
+            }}
           />
-        ))}
-      </main>
+
+          {posts.map((post) => (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              username={post.username}
+              content={post.content}
+              time={formatDistanceToNow(parseISO(post.created_datetime), {
+                addSuffix: true,
+              })}
+              canEdit={post.username === username}
+              onEdit={() => openEditModal(post)}
+              onDelete={() => openDeleteModal(post)}
+            />
+          ))}
+        </main>
+      </div>
 
       {editingPost && (
         <Modal onClose={closeEditModal}>
@@ -117,18 +123,16 @@ export default function Feed() {
             <h2 className="text-lg font-semibold">Edit item</h2>
 
             <div>
-              <label className="text-sm">Title</label>
+              <label className="text-sm block mb-1">Title</label>
               <Input
-                className="w-[612px] h-[32px] rounded-[8px] border border-border px-3"
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
               />
             </div>
 
             <div>
-              <label className="text-sm">Content</label>
+              <label className="text-sm block mb-1">Content</label>
               <Textarea
-                className="w-[612px] h-[74px] rounded-[8px] border border-border px-3"
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
               />

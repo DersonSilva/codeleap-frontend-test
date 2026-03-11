@@ -20,25 +20,24 @@ export function PostCard({
   onDelete,
 }: PostCardProps) {
   return (
-    <div className="border rounded-lg overflow-hidden bg-white">
+    <div className="rounded-lg overflow-hidden  border border-border bg-white">
       <div className="bg-brand text-white px-4 py-3 flex justify-between items-center">
         <h3 className="font-bold">{title}</h3>
 
         {canEdit && (
-          <div className="flex gap-2">
-            <button onClick={onEdit}>
-              <EditSquare />
-            </button>
-
+          <div className="flex gap-4">
             <button onClick={onDelete}>
               <DeleteForever />
+            </button>
+            <button onClick={onEdit}>
+              <EditSquare />
             </button>
           </div>
         )}
       </div>
 
       <div className="p-4 text-sm flex flex-col gap-2">
-        <div className="flex justify-between text-gray-500 mb-3">
+        <div className="flex justify-between text-border mb-3">
           <span>@{username}</span>
           <span>{time}</span>
         </div>
