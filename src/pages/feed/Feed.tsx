@@ -127,6 +127,7 @@ export default function Feed() {
               <Input
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
+                className="w-full h-[32px] rounded-[8px] border border-border px-3"
               />
             </div>
 
@@ -135,6 +136,7 @@ export default function Feed() {
               <Textarea
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
+                className="w-full h-[74px] rounded-[8px] border border-border px-3 py-2"
               />
             </div>
 

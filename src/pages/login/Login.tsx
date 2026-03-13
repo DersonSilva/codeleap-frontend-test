@@ -31,7 +31,7 @@ export default function Login() {
 
         <div className="flex flex-col gap-4">
           <div>
-            <label className="w-[199px] h-[19px] font-normal text-[16px] leading-[19px] tracking-[0%] block mb-1">
+            <label className="w-[199px] h-[19px] font-normal text-[16px] leading-[19px] tracking-[0%] block mb-2">
               Please enter your username
             </label>
 
@@ -39,16 +39,15 @@ export default function Login() {
               placeholder="John Doe"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-[452px] h-8 rounded-lg border border-border px-3"
+              className="w-[452px] h-8 rounded-lg border border-border px-3 placeholder:text-[14px] placeholder:font-normal"
             />
           </div>
 
           <div className="flex justify-end">
             <Button
-              className="bg-brand"
+              className="bg-brand w-[111px] h-[32px] text-[16px] font-[400] rounded-[8px]"
               onClick={handleEnter}
               disabled={isDisabled}
-              size="sm"
             >
               ENTER
             </Button>

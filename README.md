@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# 🚀 <span style="color:#4F46E5">CodeLeap Frontend Challenge</span>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React** application built for the **CodeLeap** frontend coding challenge.  
+This project allows users to **create, read, update, and delete posts (CRUD)** with a **professional, responsive, and clean UI**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 <span style="color:#F59E0B">Features</span>
 
-## React Compiler
+- 📝 **Create Posts** – Add a title and content to a new post.
+- 📄 **Read Posts** – Fetch and display posts from the backend feed.
+- ✏️ **Update Posts** – Edit your own posts using a modal.
+- 🗑️ **Delete Posts** – Delete your own posts with confirmation.
+- ⏳ **Loading Skeletons** – Professional skeleton loaders for a smooth experience.
+- 📱 **Responsive Design** – Works perfectly on **mobile, tablet, and desktop**.
+- 🎨 **Styled with Tailwind CSS** – Clean and modern look with **Google Fonts (Roboto)**.
+- ⚡ **React Query** – Efficient data fetching, caching, and automatic updates.
+- 🔔 **Toast Notifications** – Visual feedback for create, update, delete actions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ <span style="color:#10B981">Technologies Used</span>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Technology                | Purpose                                            |
+| ------------------------- | -------------------------------------------------- |
+| **React (Vite)**          | Frontend framework for UI development              |
+| **Tailwind CSS**          | Utility-first styling for clean, responsive layout |
+| **React Query**           | State management and data fetching                 |
+| **Axios**                 | HTTP client for backend communication              |
+| **Google Fonts (Roboto)** | Modern typography for the application              |
+| **Date-fns**              | Formatting post timestamps                         |
+| **Material Icons**        | Icons for edit and delete actions                  |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 💻 <span style="color:#3B82F6">Installation</span>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1️⃣ Clone the repository
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+```bash
+git clone https://github.com/your-username/codeleap-frontend.git
+cd codeleap-frontend
+npm install
+npm run dev
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Open http://localhost:5173 in your browser to see the project running.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+
+echo "⚙️ \033[95mHow it Works\033[0m
+
+Data fetching is handled by usePosts using React Query, ensuring the feed always displays the latest posts.
+
+Posts are sorted by most recent at the top.
+
+Edit/Delete buttons are only enabled for posts created by the current user.
+
+Skeleton loaders display while fetching data.
+
+Responsive layout ensures usability across all devices.
+
+✅ \033[91mBest Practices\033[0m
+
+Componentized architecture for reusability.
+
+Separation of UI and logic using hooks.
+
+Tailwind utility classes for clean and maintainable styling.
+
+Accessibility-friendly with labels, focus states, and semantic buttons.
+
+Professional skeleton loader for better UX.
+
+Your Name – Anderson Pereira da Silva"
 ```
