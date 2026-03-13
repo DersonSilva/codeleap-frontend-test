@@ -33,13 +33,11 @@ This project allows users to **create, read, update, and delete posts (CRUD)** w
 
 ---
 
-## 💻 <span style="color:#3B82F6">Installation</span>
-
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/codeleap-frontend.git
-cd codeleap-frontend
+git clone https://github.com/DersonSilva/codeleap-frontend-test.git
+cd codeleap-frontend-test
 npm install
 npm run dev
 
